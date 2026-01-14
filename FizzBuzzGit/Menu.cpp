@@ -22,8 +22,26 @@ void Menu::printMenu()
 int Menu::getUserInput(const string& prompt)
 {
 	int value;
-	cout << prompt;
-	cin >> value;
+	while (true)
+	{
+		cout << prompt;
+		string input;
+		cin >> input;
+
+		try
+		{
+			size_t pos;
+			value = stoi(input, &pos); // convert string to int
+			if (pos != input.length())
+			{
+				throw invalid_argument("Extra characters!\n");
+			}
+			break;
+		}catch(...) //meant to catch everything not just an argument
+		{
+			cout << "Invalid input!\n";
+		}
+	}
 	return value;
 }
 
@@ -45,7 +63,7 @@ void Menu::handleChoice(int choice)
 		Range temp(s, e);
 		if (!temp.isValid())
 		{
-			cout << "Invalid range, resetting to default: 1-100\n\n";
+			cout << "Invalid range! Both numbers must be positive and start <= end. Resetting to 1-100.\n\n";
 			temp = Range();
 		}
 

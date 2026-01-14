@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/.gitattributes
+/FizzBuzzGit/FizzBuzzGit.cpp
+/FizzBuzzGit/FizzBuzzGit.h
+/FizzBuzzGit/FizzBuzzGit.h
